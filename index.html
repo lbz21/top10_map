@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html><head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="bulgaria_top10_map_files/leaflet.js"></script>
+    <script src="bulgaria_top10_map_files/jquery-1.12.4.min.js"></script>
+    <script src="bulgaria_top10_map_files/bootstrap.bundle.min.js"></script>
+    <script src="bulgaria_top10_map_files/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="bulgaria_top10_map_files/leaflet.css">
+    <link rel="stylesheet" href="bulgaria_top10_map_files/bootstrap.min.css">
+    <link rel="stylesheet" href="bulgaria_top10_map_files/bootstrap.min_002.css">
+    <link rel="stylesheet" href="bulgaria_top10_map_files/all.min.css">
+    <link rel="stylesheet" href="bulgaria_top10_map_files/leaflet.awesome-markers.css">
+    <link rel="stylesheet" href="bulgaria_top10_map_files/leaflet.awesome.rotate.min.css">
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+            <style>
+                #map_7a3b0e9695cb3d85dc75731ee9665c8c {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="bulgaria_top10_map_files/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="bulgaria_top10_map_files/MarkerCluster.css">
+    <link rel="stylesheet" href="bulgaria_top10_map_files/MarkerCluster.Default.css">
+</head>
+<body class="">
+    
+    
+        function restrictMap() {
+            var bounds = L.latLngBounds(
+                L.latLng(41.2, 22.4),
+                L.latLng(44.2, 28.5)
+            );
+            map.setMaxBounds(bounds);
+            map.on('drag', function() {
+                map.panInsideBounds(bounds, {animate: false});
+            });
+        }
+        restrictMap();
+        
+    
+        <div id="legend" style="
+            position: fixed; bottom: 25px; left: 25px; z-index: 9999;
+            background: rgba(255,255,255,0.97); border: 2px solid #4c9f70;
+            border-radius: 12px; padding: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            width: 420px; max-height: 440px; overflow-y: auto; color: #004c26;
+            font-family: Arial, sans-serif;">
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid #d1e7dd; padding-bottom: 8px;">
+                <h3 style="margin: 0; font-size: 15px; font-weight: bold; color: #004c26;">ТОП 10 СКТ с претоварени ТПС</h3>
+                <a href="#" id="reset" style="color:#0066cc;text-decoration:none;font-size:12px;white-space: nowrap;">
+                    <i class="fas fa-sync-alt" style="margin-right:4px;"></i> Покажи всички
+                </a>
+            </div>
+            
+            <table id="legendTable" style="width:100%;border-collapse:collapse;font-size:11px;">
+                <thead style="background-color:#8fc1a9;position:sticky;top:0;z-index:1;">
+                    <tr>
+                        <th style="border:1px solid #4c9f70;padding:6px;text-align:center;width:40px;">
+                            #
+                        </th>
+                        <th style="border:1px solid #4c9f70;padding:6px;text-align:center;">
+                            СКТ №
+                        </th>
+                        <th style="border:1px solid #4c9f70;padding:6px;text-align:center;width:80px;">
+                            Дата
+                        </th>
+                        <th style="border:1px solid #4c9f70;padding:6px;text-align:center;">
+                            Локация
+                        </th>
+                        <th style="border:1px solid #4c9f70;padding:6px;text-align:center;width:70px;">
+                            Посока
+                        </th>
+                        <th style="border:1px solid #4c9f70;padding:6px;text-align:center;width:110px;">
+                            GPS Координати
+                        </th>
+                        <th style="border:1px solid #4c9f70;padding:6px;text-align:center;width:50px;">
+                            Претоварени ТПС с 10%
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr class="legendRow" data-rank="1" data-lat="43.441169" data-lon="27.825189" style="background:#e6f2e9;transition: all 0.2s;">
+                    <td style="border:1px solid #4c9f70;padding:6px;font-weight:bold;color:white;
+                        background:#dc3545;text-align:center;">1</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">10521</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;font-size:10px;">23-JUN-25</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">Стожер</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">29:Стожер-97/29</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;font-size:10px;">
+                        <a href="https://www.google.com/maps?q=43.441169,27.825189" target="_blank" class="gps-link" style="color:#0066cc;text-decoration:none;">43.441169, 27.825189</a></td>
+                    <td style="border:1px solid #4c9f70;padding:6px;text-align:right;font-weight:bold;">149</td>
+                </tr>
+                <tr class="legendRow" data-rank="2" data-lat="42.040841" data-lon="25.849006" style="background:#e6f2e9;transition: all 0.2s;">
+                    <td style="border:1px solid #4c9f70;padding:6px;font-weight:bold;color:white;
+                        background:#dc3545;text-align:center;">2</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">10932</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;font-size:10px;">23-JUN-25</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">Симеоновград</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;"><null></null></td>
+                    <td style="border:1px solid #4c9f70;padding:6px;font-size:10px;">
+                        <a href="https://www.google.com/maps?q=42.040841,25.849006" target="_blank" class="gps-link" style="color:#0066cc;text-decoration:none;">42.040841, 25.849006</a></td>
+                    <td style="border:1px solid #4c9f70;padding:6px;text-align:right;font-weight:bold;">122</td>
+                </tr>
+                <tr class="legendRow" data-rank="3" data-lat="42.244329" data-lon="24.72353" style="background:#e6f2e9;transition: all 0.2s;">
+                    <td style="border:1px solid #4c9f70;padding:6px;font-weight:bold;color:white;
+                        background:#dc3545;text-align:center;">3</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">10682</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;font-size:10px;">23-JUN-25</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">Труд</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">64:Труд-Граф Игнатиево</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;font-size:10px;">
+                        <a href="https://www.google.com/maps?q=42.244329,24.72353" target="_blank" class="gps-link" style="color:#0066cc;text-decoration:none;">42.244329, 24.723530</a></td>
+                    <td style="border:1px solid #4c9f70;padding:6px;text-align:right;font-weight:bold;">121</td>
+                </tr>
+                <tr class="legendRow" data-rank="4" data-lat="43.042734" data-lon="25.215309" style="background:#e6f2e9;transition: all 0.2s;">
+                    <td style="border:1px solid #4c9f70;padding:6px;font-weight:bold;color:white;
+                        background:#ffa500;text-align:center;">4</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">40271</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;font-size:10px;">23-JUN-25</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">Богатово</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">4:Севлиево-Ново село-8</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;font-size:10px;">
+                        <a href="https://www.google.com/maps?q=43.042734,25.215309" target="_blank" class="gps-link" style="color:#0066cc;text-decoration:none;">43.042734, 25.215309</a></td>
+                    <td style="border:1px solid #4c9f70;padding:6px;text-align:right;font-weight:bold;">109</td>
+                </tr>
+                <tr class="legendRow" data-rank="5" data-lat="43.337209" data-lon="26.900238" style="background:#e6f2e9;transition: all 0.2s;">
+                    <td style="border:1px solid #4c9f70;padding:6px;font-weight:bold;color:white;
+                        background:#ffa500;text-align:center;">5</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">10061</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;font-size:10px;">23-JUN-25</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">Белокопитово</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">А-2:02/A-2-ПВ Шумен-1</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;font-size:10px;">
+                        <a href="https://www.google.com/maps?q=43.337209,26.900238" target="_blank" class="gps-link" style="color:#0066cc;text-decoration:none;">43.337209, 26.900238</a></td>
+                    <td style="border:1px solid #4c9f70;padding:6px;text-align:right;font-weight:bold;">91</td>
+                </tr>
+                <tr class="legendRow" data-rank="6" data-lat="43.87851" data-lon="22.789281" style="background:#e6f2e9;transition: all 0.2s;">
+                    <td style="border:1px solid #4c9f70;padding:6px;font-weight:bold;color:white;
+                        background:#ffa500;text-align:center;">6</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">20201</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;font-size:10px;">23-JUN-25</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">Жеглица</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">1:Дунавци-Страцимир-1</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;font-size:10px;">
+                        <a href="https://www.google.com/maps?q=43.87851,22.789281" target="_blank" class="gps-link" style="color:#0066cc;text-decoration:none;">43.878510, 22.789281</a></td>
+                    <td style="border:1px solid #4c9f70;padding:6px;text-align:right;font-weight:bold;">75</td>
+                </tr>
+                <tr class="legendRow" data-rank="7" data-lat="43.219777" data-lon="26.656972" style="background:#e6f2e9;transition: all 0.2s;">
+                    <td style="border:1px solid #4c9f70;padding:6px;font-weight:bold;color:white;
+                        background:#ffa500;text-align:center;">7</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">10711</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;font-size:10px;">23-JUN-25</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">Баячево</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">74:5102/74-Баячево</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;font-size:10px;">
+                        <a href="https://www.google.com/maps?q=43.219777,26.656972" target="_blank" class="gps-link" style="color:#0066cc;text-decoration:none;">43.219777, 26.656972</a></td>
+                    <td style="border:1px solid #4c9f70;padding:6px;text-align:right;font-weight:bold;">72</td>
+                </tr>
+                <tr class="legendRow" data-rank="8" data-lat="41.991957" data-lon="23.053976" style="background:#e6f2e9;transition: all 0.2s;">
+                    <td style="border:1px solid #4c9f70;padding:6px;font-weight:bold;color:white;
+                        background:#007bff;text-align:center;">8</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">10121</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;font-size:10px;">23-JUN-25</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">Покровник</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">A-3:Бобошево-Благоевград-8</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;font-size:10px;">
+                        <a href="https://www.google.com/maps?q=41.991957,23.053976" target="_blank" class="gps-link" style="color:#0066cc;text-decoration:none;">41.991957, 23.053976</a></td>
+                    <td style="border:1px solid #4c9f70;padding:6px;text-align:right;font-weight:bold;">68</td>
+                </tr>
+                <tr class="legendRow" data-rank="9" data-lat="41.957748" data-lon="25.882524" style="background:#e6f2e9;transition: all 0.2s;">
+                    <td style="border:1px solid #4c9f70;padding:6px;font-weight:bold;color:white;
+                        background:#007bff;text-align:center;">9</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">10161</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;font-size:10px;">23-JUN-25</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">Харманли</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">A-4:05/A-4-554/А-4-4</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;font-size:10px;">
+                        <a href="https://www.google.com/maps?q=41.957748,25.882524" target="_blank" class="gps-link" style="color:#0066cc;text-decoration:none;">41.957748, 25.882524</a></td>
+                    <td style="border:1px solid #4c9f70;padding:6px;text-align:right;font-weight:bold;">67</td>
+                </tr>
+                <tr class="legendRow" data-rank="10" data-lat="43.42078" data-lon="26.549797" style="background:#e6f2e9;transition: all 0.2s;">
+                    <td style="border:1px solid #4c9f70;padding:6px;font-weight:bold;color:white;
+                        background:#007bff;text-align:center;">10</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">30391</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;font-size:10px;">23-JUN-25</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;">Манастирско</td>
+                    <td style="border:1px solid #4c9f70;padding:6px;"><null></null></td>
+                    <td style="border:1px solid #4c9f70;padding:6px;font-size:10px;">
+                        <a href="https://www.google.com/maps?q=43.42078,26.549797" target="_blank" class="gps-link" style="color:#0066cc;text-decoration:none;">43.420780, 26.549797</a></td>
+                    <td style="border:1px solid #4c9f70;padding:6px;text-align:right;font-weight:bold;">64</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <link rel="stylesheet" href="bulgaria_top10_map_files/all.min_002.css">
+        <style>
+        #legend {
+            scrollbar-width: thin;
+            scrollbar-color: #8fc1a9 #e6f2e9;
+        }
+        
+        #legend::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        #legend::-webkit-scrollbar-track {
+            background: #e6f2e9;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        #legend::-webkit-scrollbar-thumb {
+            background-color: #8fc1a9;
+            border-radius: 4px;
+        }
+        
+        .legendRow {
+            position: relative;
+        }
+        
+        .legendRow:hover {
+            background-color: #c8e6c9 !important;
+            cursor: pointer;
+            transform: scale(1.005);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .highlight {
+            animation: highlight-fade 2s;
+            background-color: #fff9c4 !important;
+        }
+        
+        @keyframes highlight-fade {
+            0% { background-color: #fff176; }
+            100% { background-color: #fff9c4; }
+        }
+        
+        #reset:hover {
+            text-decoration: underline;
+            color: #004c26 !important;
+        }
+        
+        .gps-link:hover {
+            text-decoration: underline;
+        }
+        </style>
+        
+        <script>
+        // Enhanced Interactive Functionality
+        let currentSelectedRank = null;
+        let typingTimer;
+        const doneTypingInterval = 500;
+
+        // Improved search functionality
+        document.getElementById('search').addEventListener('input', function() {
+            clearTimeout(typingTimer);
+            const input = this.value.trim();
+            
+            if (input === '') {
+                resetView();
+                return;
+            }
+            
+            typingTimer = setTimeout(() => {
+                const rank = parseInt(input);
+                if (!isNaN(rank) && rank >= 1 && rank <= 10) {
+                    showOnlyRank(rank);
+                } else {
+                    // Text search fallback
+                    searchText(input.toLowerCase());
+                }
+            }, doneTypingInterval);
+        });
+
+        // Search by text
+        function searchText(query) {
+            let found = false;
+            const rows = document.querySelectorAll('.legendRow');
+            
+            rows.forEach(row => {
+                const rowText = row.textContent.toLowerCase();
+                if (rowText.includes(query)) {
+                    row.style.display = '';
+                    found = true;
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+            
+            // If only one result found, highlight and zoom
+            const visibleRows = [...rows].filter(row => row.style.display !== 'none');
+            if (visibleRows.length === 1 && found) {
+                const row = visibleRows[0];
+                row.classList.add('highlight');
+                zoomToRow(row);
+            } else {
+                document.querySelectorAll('.highlight').forEach(el => el.classList.remove('highlight'));
+            }
+        }
+
+        // Show only the selected rank
+        function showOnlyRank(rank) {
+            const rows = document.querySelectorAll('.legendRow');
+            let foundRow = null;
+            
+            rows.forEach(row => {
+                if (row.getAttribute('data-rank') == rank) {
+                    row.style.display = '';
+                    row.classList.add('highlight');
+                    foundRow = row;
+                } else {
+                    row.style.display = 'none';
+                    row.classList.remove('highlight');
+                }
+            });
+            
+            if (foundRow) {
+                zoomToRow(foundRow);
+                currentSelectedRank = rank;
+            } else {
+                resetView();
+            }
+        }
+
+                // Zoom to row coordinates
+        function zoomToRow(row) {
+            const lat = parseFloat(row.getAttribute('data-lat'));
+            const lon = parseFloat(row.getAttribute('data-lon'));
+            map.setView([lat, lon], Config.DETAIL_ZOOM, {
+                animate: true,
+                duration: 0.5
+            });
+        }
+
+        // Reset view
+        function resetView() {
+            const rows = document.querySelectorAll('.legendRow');
+            rows.forEach(row => {
+                row.style.display = '';
+                row.classList.remove('highlight');
+            });
+            map.setView([42.7, 25.5], Config.INITIAL_ZOOM);
+            document.getElementById('search').value = '';
+            currentSelectedRank = null;
+        }
+
+        // Reset button
+        document.getElementById('reset').addEventListener('click', function(e) {
+            e.preventDefault();
+            resetView();
+            document.getElementById('search').focus();
+        });
+
+        // Row click handler
+        document.querySelectorAll('.legendRow').forEach(row => {
+            row.addEventListener('click', function(e) {
+                if (!e.target.classList.contains('gps-link')) {
+                    zoomToRow(this);
+                    
+                    // Highlight only this row
+                    document.querySelectorAll('.legendRow').forEach(r => r.classList.remove('highlight'));
+                    this.classList.add('highlight');
+                    
+                    // Update search field
+                    document.getElementById('search').value = this.getAttribute('data-rank');
+                    currentSelectedRank = this.getAttribute('data-rank');
+                }
+            });
+        });
+
+        // Preserve highlight when returning from GPS link
+        window.addEventListener('blur', function() {
+            if (document.activeElement.classList.contains('gps-link')) {
+                setTimeout(() => {
+                    document.activeElement.blur();
+                }, 100);
+            }
+        });
+        </script>
+        
+    
+            <div class="folium-map leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" id="map_7a3b0e9695cb3d85dc75731ee9665c8c" tabindex="0" style="outline: none;"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(-1286px, 327px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 17; transform: translate3d(-1555px, -164px, 0px) scale(2);"></div><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(-1555px, -164px, 0px) scale(1);"><img alt="" src="bulgaria_top10_map_files/93_007.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(3352px, 128px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/93_004.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(3608px, 128px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/92_009.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(3352px, -128px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/92_007.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(3608px, -128px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/94_002.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(3352px, 384px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/94_007.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(3608px, 384px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/93_002.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(3096px, 128px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/93_008.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(3864px, 128px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/92_003.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(3096px, -128px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/92_004.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(3864px, -128px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/94_006.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(3096px, 384px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/94_004.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(3864px, 384px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/91_003.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(3352px, -384px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/91_009.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(3608px, -384px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/95_009.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(3352px, 640px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/95_006.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(3608px, 640px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/91_006.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(3096px, -384px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/91_005.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(3864px, -384px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/93_005.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(2840px, 128px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/93_003.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(4120px, 128px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/95_005.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(3096px, 640px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/95_003.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(3864px, 640px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/92_006.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(2840px, -128px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/92_002.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(4120px, -128px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/94_008.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(2840px, 384px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/94_003.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(4120px, 384px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/91_007.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(2840px, -384px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/91_002.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(4120px, -384px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/95_008.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(2840px, 640px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/95_002.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(4120px, 640px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/93.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(2584px, 128px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/93_006.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(4376px, 128px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/92.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(2584px, -128px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/92_008.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(4376px, -128px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/94.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(2584px, 384px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/94_009.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(4376px, 384px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/91.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(2584px, -384px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/91_008.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(4376px, -384px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/95.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(2584px, 640px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/95_007.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(4376px, 640px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/93_009.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(4632px, 128px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/92_005.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(4632px, -128px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/94_005.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(4632px, 384px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/91_004.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(4632px, -384px, 0px); opacity: 1;"><img alt="" src="bulgaria_top10_map_files/95_004.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(4632px, 640px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-overlay-pane"></div><div class="leaflet-pane leaflet-shadow-pane"></div><div class="leaflet-pane leaflet-marker-pane"><div class="leaflet-marker-icon empty leaflet-zoom-animated leaflet-interactive" style="margin-left: -16px; margin-top: -16px; width: 32px; height: 32px; transform: translate3d(1898px, 486px, 0px); z-index: 486; opacity: 1;" tabindex="0" role="button" aria-describedby="leaflet-tooltip-299">
+                <div style="
+                    font-size:14px;font-weight:bold;color:white;text-align:center;
+                    background-color:#007bff;border-radius:50%;width:32px;height:32px;
+                    line-height:32px;border:2px solid white;box-shadow:0 0 6px #444;
+                    transform: translate(-50%, -50%);">
+                    8
+                </div>
+                </div><div class="leaflet-marker-icon empty leaflet-zoom-animated leaflet-interactive" style="margin-left: -16px; margin-top: -16px; width: 32px; height: 32px; transform: translate3d(1850px, 17px, 0px); z-index: 17; opacity: 1;" tabindex="0" role="button" aria-describedby="leaflet-tooltip-569">
+                <div style="
+                    font-size:14px;font-weight:bold;color:white;text-align:center;
+                    background-color:#ffa500;border-radius:50%;width:32px;height:32px;
+                    line-height:32px;border:2px solid white;box-shadow:0 0 6px #444;
+                    transform: translate(-50%, -50%);">
+                    6
+                </div>
+                </div><div class="leaflet-marker-icon empty leaflet-zoom-animated leaflet-interactive" style="margin-left: -16px; margin-top: -16px; width: 32px; height: 32px; transform: translate3d(2291px, 227px, 0px); z-index: 227; opacity: 1;" tabindex="0" role="button" aria-describedby="leaflet-tooltip-568">
+                <div style="
+                    font-size:14px;font-weight:bold;color:white;text-align:center;
+                    background-color:#ffa500;border-radius:50%;width:32px;height:32px;
+                    line-height:32px;border:2px solid white;box-shadow:0 0 6px #444;
+                    transform: translate(-50%, -50%);">
+                    4
+                </div>
+                </div><div class="leaflet-marker-icon empty leaflet-zoom-animated leaflet-interactive" style="margin-left: -16px; margin-top: -16px; width: 32px; height: 32px; transform: translate3d(2202px, 424px, 0px); z-index: 424; opacity: 1;" tabindex="0" role="button" aria-describedby="leaflet-tooltip-1078">
+                <div style="
+                    font-size:14px;font-weight:bold;color:white;text-align:center;
+                    background-color:#dc3545;border-radius:50%;width:32px;height:32px;
+                    line-height:32px;border:2px solid white;box-shadow:0 0 6px #444;
+                    transform: translate(-50%, -50%);" class="">
+                    3
+                </div>
+                </div><div class="leaflet-marker-icon empty leaflet-zoom-animated leaflet-interactive" style="margin-left: -16px; margin-top: -16px; width: 32px; height: 32px; transform: translate3d(2766px, 127px, 0px); z-index: 127; opacity: 1;" tabindex="0" role="button">
+                <div style="
+                    font-size:14px;font-weight:bold;color:white;text-align:center;
+                    background-color:#dc3545;border-radius:50%;width:32px;height:32px;
+                    line-height:32px;border:2px solid white;box-shadow:0 0 6px #444;
+                    transform: translate(-50%, -50%);">
+                    1
+                </div>
+                </div><div class="leaflet-marker-icon empty leaflet-zoom-animated leaflet-interactive" style="margin-left: -16px; margin-top: -16px; width: 32px; height: 32px; transform: translate3d(2534px, 132px, 0px); z-index: 132; opacity: 1;" tabindex="0" role="button">
+                <div style="
+                    font-size:14px;font-weight:bold;color:white;text-align:center;
+                    background-color:#007bff;border-radius:50%;width:32px;height:32px;
+                    line-height:32px;border:2px solid white;box-shadow:0 0 6px #444;
+                    transform: translate(-50%, -50%);">
+                    10
+                </div>
+                </div><div class="leaflet-marker-icon empty leaflet-zoom-animated leaflet-interactive" style="margin-left: -16px; margin-top: -16px; width: 32px; height: 32px; transform: translate3d(2554px, 182px, 0px); z-index: 182; opacity: 1;" tabindex="0" role="button">
+                <div style="
+                    font-size:14px;font-weight:bold;color:white;text-align:center;
+                    background-color:#ffa500;border-radius:50%;width:32px;height:32px;
+                    line-height:32px;border:2px solid white;box-shadow:0 0 6px #444;
+                    transform: translate(-50%, -50%);">
+                    7
+                </div>
+                </div><div class="leaflet-marker-icon empty leaflet-zoom-animated leaflet-interactive" style="margin-left: -16px; margin-top: -16px; width: 32px; height: 32px; transform: translate3d(2598px, 153px, 0px); z-index: 153; opacity: 1;" tabindex="0" role="button">
+                <div style="
+                    font-size:14px;font-weight:bold;color:white;text-align:center;
+                    background-color:#ffa500;border-radius:50%;width:32px;height:32px;
+                    line-height:32px;border:2px solid white;box-shadow:0 0 6px #444;
+                    transform: translate(-50%, -50%);">
+                    5
+                </div>
+                </div><div class="leaflet-marker-icon empty leaflet-zoom-animated leaflet-interactive" style="margin-left: -16px; margin-top: -16px; width: 32px; height: 32px; opacity: 1; transform: translate3d(2413px, 494px, 0px); z-index: 494;" tabindex="0" role="button" aria-describedby="leaflet-tooltip-280">
+                <div style="
+                    font-size:14px;font-weight:bold;color:white;text-align:center;
+                    background-color:#007bff;border-radius:50%;width:32px;height:32px;
+                    line-height:32px;border:2px solid white;box-shadow:0 0 6px #444;
+                    transform: translate(-50%, -50%);" class="">
+                    9
+                </div>
+                </div><div class="leaflet-marker-icon empty leaflet-zoom-animated leaflet-interactive" style="margin-left: -16px; margin-top: -16px; width: 32px; height: 32px; opacity: 1; transform: translate3d(2407px, 474px, 0px); z-index: 474;" tabindex="0" role="button" aria-describedby="leaflet-tooltip-283">
+                <div style="
+                    font-size:14px;font-weight:bold;color:white;text-align:center;
+                    background-color:#dc3545;border-radius:50%;width:32px;height:32px;
+                    line-height:32px;border:2px solid white;box-shadow:0 0 6px #444;
+                    transform: translate(-50%, -50%);">
+                    2
+                </div>
+                </div></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(37304.5px, 24040.5px, 0px) scale(128);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in" aria-disabled="false"><span aria-hidden="true">+</span></a><a class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out" aria-disabled="false"><span aria-hidden="true">−</span></a></div></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"><div class="leaflet-control-scale leaflet-control"><div class="leaflet-control-scale-line" style="width: 67px;">30 km</div><div class="leaflet-control-scale-line" style="width: 72px;">20 mi</div></div></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com/" title="A JavaScript library for interactive maps"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" class="leaflet-attribution-flag"><path fill="#4C7BE1" d="M0 0h12v4H0z"></path><path fill="#FFD500" d="M0 4h12v3H0z"></path><path fill="#E0BC00" d="M0 7h12v1H0z"></path></svg> Leaflet</a> <span aria-hidden="true">|</span> Data by © <a target="_blank" href="http://openstreetmap.org/">OpenStreetMap</a>, under <a target="_blank" href="http://www.openstreetmap.org/copyright">ODbL</a>.</div></div></div></div>
+        
+
+<script>
+    
+    
+            var map_7a3b0e9695cb3d85dc75731ee9665c8c = L.map(
+                "map_7a3b0e9695cb3d85dc75731ee9665c8c",
+                {
+                    center: [42.7, 25.5],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 7,
+                    zoomControl: true,
+                    preferCanvas: true,
+                }
+            );
+            L.control.scale().addTo(map_7a3b0e9695cb3d85dc75731ee9665c8c);
+
+            
+
+        
+    
+            var tile_layer_6e30780c835537464e6536d85f7a6a4f = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_7a3b0e9695cb3d85dc75731ee9665c8c);
+        
+    
+            var marker_cluster_962975d6b8639f12299f8c4655fa9fce = L.markerClusterGroup(
+                {"maxClusterRadius": 20, "showCoverageOnHover": false, "spiderfyDistanceMultiplier": 1.5}
+            );
+            map_7a3b0e9695cb3d85dc75731ee9665c8c.addLayer(marker_cluster_962975d6b8639f12299f8c4655fa9fce);
+        
+    
+            var marker_6032c5db2ea1ff41b54e8ce5ef68168a = L.marker(
+                [43.441169, 27.825189],
+                {}
+            ).addTo(marker_cluster_962975d6b8639f12299f8c4655fa9fce);
+        
+    
+            var div_icon_6a155c8969168b605d3e7f79df9f6414 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    font-size:14px;font-weight:bold;color:white;text-align:center;\n                    background-color:#dc3545;border-radius:50%;width:32px;height:32px;\n                    line-height:32px;border:2px solid white;box-shadow:0 0 6px #444;\n                    transform: translate(-50%, -50%);\"\u003e\n                    1\n                \u003c/div\u003e\n                ", "iconAnchor": [16, 16], "iconSize": [32, 32]});
+            marker_6032c5db2ea1ff41b54e8ce5ef68168a.setIcon(div_icon_6a155c8969168b605d3e7f79df9f6414);
+        
+    
+        var popup_2412dd594b66ac172e3b41b7286001b5 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_993c3fbcacb380da6c2dfd151af4d10d = $(`<div id="html_993c3fbcacb380da6c2dfd151af4d10d" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; width: 250px;">             <h3 style="color: #dc3545; margin: 5px 0; font-size: 14px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">                 #1 - Стожер             </h3>             <table style="width: 100%; border-collapse: collapse; font-size: 12px;">                 <tr>                     <td style="padding: 3px; font-weight: bold; width: 40%; vertical-align: top;">СКТ №:</td>                     <td style="padding: 3px; vertical-align: top;">10521</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Дата:</td>                     <td style="padding: 3px; vertical-align: top;">23-JUN-25</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Посока:</td>                     <td style="padding: 3px; vertical-align: top;">29:Стожер-97/29</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Претоварени:</td>                     <td style="padding: 3px; vertical-align: top; font-weight: bold; color: #dc3545;">149</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Координати:</td>                     <td style="padding: 3px; vertical-align: top;">                         <a href="https://www.google.com/maps?q=43.441169,27.825189" target="_blank" style="color: #0066cc; text-decoration: none; word-break: break-all;">                             43.441169, 27.825189                         </a>                     </td>                 </tr>             </table>         </div>         </div>`)[0];
+                popup_2412dd594b66ac172e3b41b7286001b5.setContent(html_993c3fbcacb380da6c2dfd151af4d10d);
+            
+        
+
+        marker_6032c5db2ea1ff41b54e8ce5ef68168a.bindPopup(popup_2412dd594b66ac172e3b41b7286001b5)
+        ;
+
+        
+    
+    
+            marker_6032c5db2ea1ff41b54e8ce5ef68168a.bindTooltip(
+                `<div>
+                     #1 - Стожер
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9d6bdc52d9d232a2786fab56ecb8a45b = L.marker(
+                [42.040841, 25.849006],
+                {}
+            ).addTo(marker_cluster_962975d6b8639f12299f8c4655fa9fce);
+        
+    
+            var div_icon_a2ca9bbc1ca578a89d754e4d0a94d420 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    font-size:14px;font-weight:bold;color:white;text-align:center;\n                    background-color:#dc3545;border-radius:50%;width:32px;height:32px;\n                    line-height:32px;border:2px solid white;box-shadow:0 0 6px #444;\n                    transform: translate(-50%, -50%);\"\u003e\n                    2\n                \u003c/div\u003e\n                ", "iconAnchor": [16, 16], "iconSize": [32, 32]});
+            marker_9d6bdc52d9d232a2786fab56ecb8a45b.setIcon(div_icon_a2ca9bbc1ca578a89d754e4d0a94d420);
+        
+    
+        var popup_660c3d1bc62ae53c39cc1dc25af47b99 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8dfc336f4c3b9099d0bc2be39b9b554e = $(`<div id="html_8dfc336f4c3b9099d0bc2be39b9b554e" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; width: 250px;">             <h3 style="color: #dc3545; margin: 5px 0; font-size: 14px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">                 #2 - Симеоновград             </h3>             <table style="width: 100%; border-collapse: collapse; font-size: 12px;">                 <tr>                     <td style="padding: 3px; font-weight: bold; width: 40%; vertical-align: top;">СКТ №:</td>                     <td style="padding: 3px; vertical-align: top;">10932</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Дата:</td>                     <td style="padding: 3px; vertical-align: top;">23-JUN-25</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Посока:</td>                     <td style="padding: 3px; vertical-align: top;"><Null></td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Претоварени:</td>                     <td style="padding: 3px; vertical-align: top; font-weight: bold; color: #dc3545;">122</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Координати:</td>                     <td style="padding: 3px; vertical-align: top;">                         <a href="https://www.google.com/maps?q=42.040841,25.849006" target="_blank" style="color: #0066cc; text-decoration: none; word-break: break-all;">                             42.040841, 25.849006                         </a>                     </td>                 </tr>             </table>         </div>         </div>`)[0];
+                popup_660c3d1bc62ae53c39cc1dc25af47b99.setContent(html_8dfc336f4c3b9099d0bc2be39b9b554e);
+            
+        
+
+        marker_9d6bdc52d9d232a2786fab56ecb8a45b.bindPopup(popup_660c3d1bc62ae53c39cc1dc25af47b99)
+        ;
+
+        
+    
+    
+            marker_9d6bdc52d9d232a2786fab56ecb8a45b.bindTooltip(
+                `<div>
+                     #2 - Симеоновград
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_57611a93359bd856ddf6da64d9b17561 = L.marker(
+                [42.244329, 24.72353],
+                {}
+            ).addTo(marker_cluster_962975d6b8639f12299f8c4655fa9fce);
+        
+    
+            var div_icon_e4c67aaf7d7859347f409c9aa8e6b0f4 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    font-size:14px;font-weight:bold;color:white;text-align:center;\n                    background-color:#dc3545;border-radius:50%;width:32px;height:32px;\n                    line-height:32px;border:2px solid white;box-shadow:0 0 6px #444;\n                    transform: translate(-50%, -50%);\"\u003e\n                    3\n                \u003c/div\u003e\n                ", "iconAnchor": [16, 16], "iconSize": [32, 32]});
+            marker_57611a93359bd856ddf6da64d9b17561.setIcon(div_icon_e4c67aaf7d7859347f409c9aa8e6b0f4);
+        
+    
+        var popup_5c3d6b6e4366f2a59b8cf9d428f330ff = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_7bf195ae1290991e5abc053915c8a148 = $(`<div id="html_7bf195ae1290991e5abc053915c8a148" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; width: 250px;">             <h3 style="color: #dc3545; margin: 5px 0; font-size: 14px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">                 #3 - Труд             </h3>             <table style="width: 100%; border-collapse: collapse; font-size: 12px;">                 <tr>                     <td style="padding: 3px; font-weight: bold; width: 40%; vertical-align: top;">СКТ №:</td>                     <td style="padding: 3px; vertical-align: top;">10682</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Дата:</td>                     <td style="padding: 3px; vertical-align: top;">23-JUN-25</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Посока:</td>                     <td style="padding: 3px; vertical-align: top;">64:Труд-Граф Игнатиево</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Претоварени:</td>                     <td style="padding: 3px; vertical-align: top; font-weight: bold; color: #dc3545;">121</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Координати:</td>                     <td style="padding: 3px; vertical-align: top;">                         <a href="https://www.google.com/maps?q=42.244329,24.72353" target="_blank" style="color: #0066cc; text-decoration: none; word-break: break-all;">                             42.244329, 24.723530                         </a>                     </td>                 </tr>             </table>         </div>         </div>`)[0];
+                popup_5c3d6b6e4366f2a59b8cf9d428f330ff.setContent(html_7bf195ae1290991e5abc053915c8a148);
+            
+        
+
+        marker_57611a93359bd856ddf6da64d9b17561.bindPopup(popup_5c3d6b6e4366f2a59b8cf9d428f330ff)
+        ;
+
+        
+    
+    
+            marker_57611a93359bd856ddf6da64d9b17561.bindTooltip(
+                `<div>
+                     #3 - Труд
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3c080a71bd4c0b308fc70f85c72cad24 = L.marker(
+                [43.042734, 25.215309],
+                {}
+            ).addTo(marker_cluster_962975d6b8639f12299f8c4655fa9fce);
+        
+    
+            var div_icon_5e768a351dc0797c8aad8083c3e560e8 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    font-size:14px;font-weight:bold;color:white;text-align:center;\n                    background-color:#ffa500;border-radius:50%;width:32px;height:32px;\n                    line-height:32px;border:2px solid white;box-shadow:0 0 6px #444;\n                    transform: translate(-50%, -50%);\"\u003e\n                    4\n                \u003c/div\u003e\n                ", "iconAnchor": [16, 16], "iconSize": [32, 32]});
+            marker_3c080a71bd4c0b308fc70f85c72cad24.setIcon(div_icon_5e768a351dc0797c8aad8083c3e560e8);
+        
+    
+        var popup_acfda1846b92a2678e617f27a8b66afd = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_576f369c480348ea0a8eb896f9387f45 = $(`<div id="html_576f369c480348ea0a8eb896f9387f45" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; width: 250px;">             <h3 style="color: #ffa500; margin: 5px 0; font-size: 14px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">                 #4 - Богатово             </h3>             <table style="width: 100%; border-collapse: collapse; font-size: 12px;">                 <tr>                     <td style="padding: 3px; font-weight: bold; width: 40%; vertical-align: top;">СКТ №:</td>                     <td style="padding: 3px; vertical-align: top;">40271</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Дата:</td>                     <td style="padding: 3px; vertical-align: top;">23-JUN-25</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Посока:</td>                     <td style="padding: 3px; vertical-align: top;">4:Севлиево-Ново село-8</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Претоварени:</td>                     <td style="padding: 3px; vertical-align: top; font-weight: bold; color: #ffa500;">109</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Координати:</td>                     <td style="padding: 3px; vertical-align: top;">                         <a href="https://www.google.com/maps?q=43.042734,25.215309" target="_blank" style="color: #0066cc; text-decoration: none; word-break: break-all;">                             43.042734, 25.215309                         </a>                     </td>                 </tr>             </table>         </div>         </div>`)[0];
+                popup_acfda1846b92a2678e617f27a8b66afd.setContent(html_576f369c480348ea0a8eb896f9387f45);
+            
+        
+
+        marker_3c080a71bd4c0b308fc70f85c72cad24.bindPopup(popup_acfda1846b92a2678e617f27a8b66afd)
+        ;
+
+        
+    
+    
+            marker_3c080a71bd4c0b308fc70f85c72cad24.bindTooltip(
+                `<div>
+                     #4 - Богатово
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_eb99dedd60af6cc38e709e3286befdb1 = L.marker(
+                [43.337209, 26.900238],
+                {}
+            ).addTo(marker_cluster_962975d6b8639f12299f8c4655fa9fce);
+        
+    
+            var div_icon_382ca25b9fc223ed2810f5c9ceba0821 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    font-size:14px;font-weight:bold;color:white;text-align:center;\n                    background-color:#ffa500;border-radius:50%;width:32px;height:32px;\n                    line-height:32px;border:2px solid white;box-shadow:0 0 6px #444;\n                    transform: translate(-50%, -50%);\"\u003e\n                    5\n                \u003c/div\u003e\n                ", "iconAnchor": [16, 16], "iconSize": [32, 32]});
+            marker_eb99dedd60af6cc38e709e3286befdb1.setIcon(div_icon_382ca25b9fc223ed2810f5c9ceba0821);
+        
+    
+        var popup_58ac12a828a84d9366c9716b8db71691 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4a62c1b49e7706884660e8e2ff09e9b7 = $(`<div id="html_4a62c1b49e7706884660e8e2ff09e9b7" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; width: 250px;">             <h3 style="color: #ffa500; margin: 5px 0; font-size: 14px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">                 #5 - Белокопитово             </h3>             <table style="width: 100%; border-collapse: collapse; font-size: 12px;">                 <tr>                     <td style="padding: 3px; font-weight: bold; width: 40%; vertical-align: top;">СКТ №:</td>                     <td style="padding: 3px; vertical-align: top;">10061</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Дата:</td>                     <td style="padding: 3px; vertical-align: top;">23-JUN-25</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Посока:</td>                     <td style="padding: 3px; vertical-align: top;">А-2:02/A-2-ПВ Шумен-1</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Претоварени:</td>                     <td style="padding: 3px; vertical-align: top; font-weight: bold; color: #ffa500;">91</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Координати:</td>                     <td style="padding: 3px; vertical-align: top;">                         <a href="https://www.google.com/maps?q=43.337209,26.900238" target="_blank" style="color: #0066cc; text-decoration: none; word-break: break-all;">                             43.337209, 26.900238                         </a>                     </td>                 </tr>             </table>         </div>         </div>`)[0];
+                popup_58ac12a828a84d9366c9716b8db71691.setContent(html_4a62c1b49e7706884660e8e2ff09e9b7);
+            
+        
+
+        marker_eb99dedd60af6cc38e709e3286befdb1.bindPopup(popup_58ac12a828a84d9366c9716b8db71691)
+        ;
+
+        
+    
+    
+            marker_eb99dedd60af6cc38e709e3286befdb1.bindTooltip(
+                `<div>
+                     #5 - Белокопитово
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_adbefdb0de952d669b69556b6b538feb = L.marker(
+                [43.87851, 22.789281],
+                {}
+            ).addTo(marker_cluster_962975d6b8639f12299f8c4655fa9fce);
+        
+    
+            var div_icon_e844b7f6e6401b26b739932047ae96fe = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    font-size:14px;font-weight:bold;color:white;text-align:center;\n                    background-color:#ffa500;border-radius:50%;width:32px;height:32px;\n                    line-height:32px;border:2px solid white;box-shadow:0 0 6px #444;\n                    transform: translate(-50%, -50%);\"\u003e\n                    6\n                \u003c/div\u003e\n                ", "iconAnchor": [16, 16], "iconSize": [32, 32]});
+            marker_adbefdb0de952d669b69556b6b538feb.setIcon(div_icon_e844b7f6e6401b26b739932047ae96fe);
+        
+    
+        var popup_3e32a12e8462df52a4d8d21993d17295 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_99dd22d67732d538282842e35aab061f = $(`<div id="html_99dd22d67732d538282842e35aab061f" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; width: 250px;">             <h3 style="color: #ffa500; margin: 5px 0; font-size: 14px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">                 #6 - Жеглица             </h3>             <table style="width: 100%; border-collapse: collapse; font-size: 12px;">                 <tr>                     <td style="padding: 3px; font-weight: bold; width: 40%; vertical-align: top;">СКТ №:</td>                     <td style="padding: 3px; vertical-align: top;">20201</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Дата:</td>                     <td style="padding: 3px; vertical-align: top;">23-JUN-25</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Посока:</td>                     <td style="padding: 3px; vertical-align: top;">1:Дунавци-Страцимир-1</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Претоварени:</td>                     <td style="padding: 3px; vertical-align: top; font-weight: bold; color: #ffa500;">75</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Координати:</td>                     <td style="padding: 3px; vertical-align: top;">                         <a href="https://www.google.com/maps?q=43.87851,22.789281" target="_blank" style="color: #0066cc; text-decoration: none; word-break: break-all;">                             43.878510, 22.789281                         </a>                     </td>                 </tr>             </table>         </div>         </div>`)[0];
+                popup_3e32a12e8462df52a4d8d21993d17295.setContent(html_99dd22d67732d538282842e35aab061f);
+            
+        
+
+        marker_adbefdb0de952d669b69556b6b538feb.bindPopup(popup_3e32a12e8462df52a4d8d21993d17295)
+        ;
+
+        
+    
+    
+            marker_adbefdb0de952d669b69556b6b538feb.bindTooltip(
+                `<div>
+                     #6 - Жеглица
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ad0424d0031f687cda2504404fc9e1f5 = L.marker(
+                [43.219777, 26.656972],
+                {}
+            ).addTo(marker_cluster_962975d6b8639f12299f8c4655fa9fce);
+        
+    
+            var div_icon_7d7f1808d5006091b54ea3e3d3574f85 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    font-size:14px;font-weight:bold;color:white;text-align:center;\n                    background-color:#ffa500;border-radius:50%;width:32px;height:32px;\n                    line-height:32px;border:2px solid white;box-shadow:0 0 6px #444;\n                    transform: translate(-50%, -50%);\"\u003e\n                    7\n                \u003c/div\u003e\n                ", "iconAnchor": [16, 16], "iconSize": [32, 32]});
+            marker_ad0424d0031f687cda2504404fc9e1f5.setIcon(div_icon_7d7f1808d5006091b54ea3e3d3574f85);
+        
+    
+        var popup_0929d294a9f4ec9af00eb0487a6333b2 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f9de0fd40b0987e4887e5c4944cd6d5d = $(`<div id="html_f9de0fd40b0987e4887e5c4944cd6d5d" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; width: 250px;">             <h3 style="color: #ffa500; margin: 5px 0; font-size: 14px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">                 #7 - Баячево             </h3>             <table style="width: 100%; border-collapse: collapse; font-size: 12px;">                 <tr>                     <td style="padding: 3px; font-weight: bold; width: 40%; vertical-align: top;">СКТ №:</td>                     <td style="padding: 3px; vertical-align: top;">10711</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Дата:</td>                     <td style="padding: 3px; vertical-align: top;">23-JUN-25</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Посока:</td>                     <td style="padding: 3px; vertical-align: top;">74:5102/74-Баячево</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Претоварени:</td>                     <td style="padding: 3px; vertical-align: top; font-weight: bold; color: #ffa500;">72</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Координати:</td>                     <td style="padding: 3px; vertical-align: top;">                         <a href="https://www.google.com/maps?q=43.219777,26.656972" target="_blank" style="color: #0066cc; text-decoration: none; word-break: break-all;">                             43.219777, 26.656972                         </a>                     </td>                 </tr>             </table>         </div>         </div>`)[0];
+                popup_0929d294a9f4ec9af00eb0487a6333b2.setContent(html_f9de0fd40b0987e4887e5c4944cd6d5d);
+            
+        
+
+        marker_ad0424d0031f687cda2504404fc9e1f5.bindPopup(popup_0929d294a9f4ec9af00eb0487a6333b2)
+        ;
+
+        
+    
+    
+            marker_ad0424d0031f687cda2504404fc9e1f5.bindTooltip(
+                `<div>
+                     #7 - Баячево
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9bd39f384b835b5e8842937e21509eb7 = L.marker(
+                [41.991957, 23.053976],
+                {}
+            ).addTo(marker_cluster_962975d6b8639f12299f8c4655fa9fce);
+        
+    
+            var div_icon_552139bc9fd9bf88fd23ce685570a89d = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    font-size:14px;font-weight:bold;color:white;text-align:center;\n                    background-color:#007bff;border-radius:50%;width:32px;height:32px;\n                    line-height:32px;border:2px solid white;box-shadow:0 0 6px #444;\n                    transform: translate(-50%, -50%);\"\u003e\n                    8\n                \u003c/div\u003e\n                ", "iconAnchor": [16, 16], "iconSize": [32, 32]});
+            marker_9bd39f384b835b5e8842937e21509eb7.setIcon(div_icon_552139bc9fd9bf88fd23ce685570a89d);
+        
+    
+        var popup_a157384e899869a632dc544b46c7cedb = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_7a153a0087f2bea4aa52f333546cbbc6 = $(`<div id="html_7a153a0087f2bea4aa52f333546cbbc6" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; width: 250px;">             <h3 style="color: #007bff; margin: 5px 0; font-size: 14px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">                 #8 - Покровник             </h3>             <table style="width: 100%; border-collapse: collapse; font-size: 12px;">                 <tr>                     <td style="padding: 3px; font-weight: bold; width: 40%; vertical-align: top;">СКТ №:</td>                     <td style="padding: 3px; vertical-align: top;">10121</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Дата:</td>                     <td style="padding: 3px; vertical-align: top;">23-JUN-25</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Посока:</td>                     <td style="padding: 3px; vertical-align: top;">A-3:Бобошево-Благоевград-8</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Претоварени:</td>                     <td style="padding: 3px; vertical-align: top; font-weight: bold; color: #007bff;">68</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Координати:</td>                     <td style="padding: 3px; vertical-align: top;">                         <a href="https://www.google.com/maps?q=41.991957,23.053976" target="_blank" style="color: #0066cc; text-decoration: none; word-break: break-all;">                             41.991957, 23.053976                         </a>                     </td>                 </tr>             </table>         </div>         </div>`)[0];
+                popup_a157384e899869a632dc544b46c7cedb.setContent(html_7a153a0087f2bea4aa52f333546cbbc6);
+            
+        
+
+        marker_9bd39f384b835b5e8842937e21509eb7.bindPopup(popup_a157384e899869a632dc544b46c7cedb)
+        ;
+
+        
+    
+    
+            marker_9bd39f384b835b5e8842937e21509eb7.bindTooltip(
+                `<div>
+                     #8 - Покровник
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4d682fb5b0b636a07cecb94254033f9a = L.marker(
+                [41.957748, 25.882524],
+                {}
+            ).addTo(marker_cluster_962975d6b8639f12299f8c4655fa9fce);
+        
+    
+            var div_icon_142795e9536e484c8c2ca4a5f51ec683 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    font-size:14px;font-weight:bold;color:white;text-align:center;\n                    background-color:#007bff;border-radius:50%;width:32px;height:32px;\n                    line-height:32px;border:2px solid white;box-shadow:0 0 6px #444;\n                    transform: translate(-50%, -50%);\"\u003e\n                    9\n                \u003c/div\u003e\n                ", "iconAnchor": [16, 16], "iconSize": [32, 32]});
+            marker_4d682fb5b0b636a07cecb94254033f9a.setIcon(div_icon_142795e9536e484c8c2ca4a5f51ec683);
+        
+    
+        var popup_c17c4fae43241791df191632233deb47 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_fe07006b676d58afdd55240dcafdb0ff = $(`<div id="html_fe07006b676d58afdd55240dcafdb0ff" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; width: 250px;">             <h3 style="color: #007bff; margin: 5px 0; font-size: 14px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">                 #9 - Харманли             </h3>             <table style="width: 100%; border-collapse: collapse; font-size: 12px;">                 <tr>                     <td style="padding: 3px; font-weight: bold; width: 40%; vertical-align: top;">СКТ №:</td>                     <td style="padding: 3px; vertical-align: top;">10161</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Дата:</td>                     <td style="padding: 3px; vertical-align: top;">23-JUN-25</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Посока:</td>                     <td style="padding: 3px; vertical-align: top;">A-4:05/A-4-554/А-4-4</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Претоварени:</td>                     <td style="padding: 3px; vertical-align: top; font-weight: bold; color: #007bff;">67</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Координати:</td>                     <td style="padding: 3px; vertical-align: top;">                         <a href="https://www.google.com/maps?q=41.957748,25.882524" target="_blank" style="color: #0066cc; text-decoration: none; word-break: break-all;">                             41.957748, 25.882524                         </a>                     </td>                 </tr>             </table>         </div>         </div>`)[0];
+                popup_c17c4fae43241791df191632233deb47.setContent(html_fe07006b676d58afdd55240dcafdb0ff);
+            
+        
+
+        marker_4d682fb5b0b636a07cecb94254033f9a.bindPopup(popup_c17c4fae43241791df191632233deb47)
+        ;
+
+        
+    
+    
+            marker_4d682fb5b0b636a07cecb94254033f9a.bindTooltip(
+                `<div>
+                     #9 - Харманли
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cbfd1d08b0b933282e6d9277ed32d38f = L.marker(
+                [43.42078, 26.549797],
+                {}
+            ).addTo(marker_cluster_962975d6b8639f12299f8c4655fa9fce);
+        
+    
+            var div_icon_2e3868be4034bc152458e10eb2d83cd9 = L.divIcon({"className": "empty", "html": "\n                \u003cdiv style=\"\n                    font-size:14px;font-weight:bold;color:white;text-align:center;\n                    background-color:#007bff;border-radius:50%;width:32px;height:32px;\n                    line-height:32px;border:2px solid white;box-shadow:0 0 6px #444;\n                    transform: translate(-50%, -50%);\"\u003e\n                    10\n                \u003c/div\u003e\n                ", "iconAnchor": [16, 16], "iconSize": [32, 32]});
+            marker_cbfd1d08b0b933282e6d9277ed32d38f.setIcon(div_icon_2e3868be4034bc152458e10eb2d83cd9);
+        
+    
+        var popup_65e129e28c7937819f4bfb6ca7ddaa03 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e7930e872482c693474a7e18775bc394 = $(`<div id="html_e7930e872482c693474a7e18775bc394" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; width: 250px;">             <h3 style="color: #007bff; margin: 5px 0; font-size: 14px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">                 #10 - Манастирско             </h3>             <table style="width: 100%; border-collapse: collapse; font-size: 12px;">                 <tr>                     <td style="padding: 3px; font-weight: bold; width: 40%; vertical-align: top;">СКТ №:</td>                     <td style="padding: 3px; vertical-align: top;">30391</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Дата:</td>                     <td style="padding: 3px; vertical-align: top;">23-JUN-25</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Посока:</td>                     <td style="padding: 3px; vertical-align: top;"><Null></td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Претоварени:</td>                     <td style="padding: 3px; vertical-align: top; font-weight: bold; color: #007bff;">64</td>                 </tr>                 <tr>                     <td style="padding: 3px; font-weight: bold; vertical-align: top;">Координати:</td>                     <td style="padding: 3px; vertical-align: top;">                         <a href="https://www.google.com/maps?q=43.42078,26.549797" target="_blank" style="color: #0066cc; text-decoration: none; word-break: break-all;">                             43.420780, 26.549797                         </a>                     </td>                 </tr>             </table>         </div>         </div>`)[0];
+                popup_65e129e28c7937819f4bfb6ca7ddaa03.setContent(html_e7930e872482c693474a7e18775bc394);
+            
+        
+
+        marker_cbfd1d08b0b933282e6d9277ed32d38f.bindPopup(popup_65e129e28c7937819f4bfb6ca7ddaa03)
+        ;
+
+        
+    
+    
+            marker_cbfd1d08b0b933282e6d9277ed32d38f.bindTooltip(
+                `<div>
+                     #10 - Манастирско
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</body></html>
